@@ -134,6 +134,43 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 8
 .offer li::before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
 .offer .fit{margin-top:auto;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-bottom:16px}
 
+
+/* ops strip */
+.ops{margin-top:18px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 28px}
+@media (max-width:860px){.ops{grid-template-columns:1fr}}
+.ops .k{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ops h3{margin:4px 0 6px}
+.ops p{color:var(--muted);font-size:15px}
+.ops-tier{border-left:1px solid var(--line);padding-left:18px;display:grid;gap:2px}
+@media (max-width:860px){.ops-tier{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:12px}}
+.ops-tier span{font-size:13px;color:var(--muted)}
+.ops-tier b{font-family:var(--display);font-size:26px;font-weight:800}
+.ops-tier b small{font-family:var(--body);font-size:14px;font-weight:400;color:var(--muted)}
+.ops-tier em{font-style:normal;font-size:13.5px;color:var(--muted)}
+/* results */
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+@media (max-width:960px){.results{grid-template-columns:1fr}}
+.res{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+.res-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.pill.real{background:var(--accent-soft);color:var(--accent)}
+.pill.paper{background:color-mix(in srgb,var(--warn) 15%,transparent);color:var(--warn)}
+.pill.dead{background:color-mix(in srgb,var(--ask) 15%,transparent);color:var(--ask)}
+.when{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.res h3{margin-bottom:10px}
+.big-n{font-family:var(--mono);font-size:38px;font-weight:500;line-height:1.1}
+.sub{color:var(--muted);font-size:13.5px;margin:4px 0 16px}
+.kv{list-style:none;display:grid;gap:8px;font-size:14px}
+.kv li{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--line);padding-top:8px}
+.kv span{color:var(--muted)}
+.kv b{font-family:var(--mono);font-weight:500;text-align:right}
+.kv b.ok{color:var(--accent)} .kv b.warn{color:var(--warn);font-family:var(--body)}
+.dead-list{list-style:none;display:grid;gap:12px;font-size:14.5px}
+.dead-list li{display:grid;gap:2px;border-top:1px dashed var(--line);padding-top:10px}
+.dead-list li:first-child{border-top:0;padding-top:0}
+.dead-list span{color:var(--muted);font-size:13.5px}
+.dead-list b::before{content:"✕ ";color:var(--ask);font-family:var(--mono)}
+
 /* pipeline */
 .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:44px;position:relative}
 @media (max-width:900px){.steps{grid-template-columns:1fr;gap:14px}}
@@ -212,6 +249,7 @@ footer .disc{margin-top:18px;max-width:880px;font-size:12px;line-height:1.6}
     <ul>
       <li><a href="#offers">Services</a></li>
       <li><a href="#method">Method</a></li>
+      <li><a href="#results">Results</a></li>
       <li><a href="#case">Case study</a></li>
       <li><a href="#calc">Edge check</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -303,30 +341,47 @@ footer .disc{margin-top:18px;max-width:880px;font-size:12px;line-height:1.6}
 <section id="offers">
   <div class="wrap">
     <div class="eyebrow">Services</div>
-    <h2>Three ways to work together</h2>
-    <p class="lead">Fixed scope, fixed price. Builds are 50% to start, 25% at a milestone and 25% on delivery.</p>
+    <h2>Start small, or build the whole thing</h2>
+    <p class="lead">Fixed scope, fixed price. Builds are 50% to start, 25% at a milestone and 25% on delivery. An Edge Study's fee is credited toward any build that follows it.</p>
     <div class="offers">
       <div class="offer">
         <div class="k">01 · Research</div>
         <h3>Edge Study</h3>
-        <div class="price">from $6,000</div>
+        <div class="price">$3,500</div>
         <p>Before you build anything: is there money in the idea? I record the market, replay it, and tell you in writing whether it holds up.</p>
         <ul>
           <li>Recorder on your target markets, live stream</li>
           <li>Replay of your strategy against real fills, queue and delay</li>
           <li>Markouts: where price went 30 s, 2 min, 5 min after each fill</li>
           <li>Written findings, including what didn't work</li>
+          <li><b>Fee credited toward a build</b></li>
         </ul>
-        <div class="fit"><b>Fit:</b> you have a theory and want evidence before committing to a build.</div>
+        <div class="fit"><b>Fit:</b> you have a theory and want evidence before paying for a bot.</div>
         <a class="btn ghost" href="https://cal.com/jonbush/scoping-call">Scope a study</a>
       </div>
 
       <div class="offer feat">
-        <span class="tag">Most requested</span>
-        <div class="k">02 · Build</div>
+        <span class="tag">New · for bettors</span>
+        <div class="k">02 · Starter</div>
+        <h3>Starter Bot</h3>
+        <div class="price">from $5,000</div>
+        <p>A proven resting-order engine, set up on your own account for one venue and tuned to your markets and your limits. Live in weeks, not months.</p>
+        <ul>
+          <li>Polymarket US or Kalshi, one strategy</li>
+          <li>The same engine as the reference build: live stream, fill ledger</li>
+          <li>Loss stop, exposure cap and stale-feed breakers</li>
+          <li>Two weeks of paper trading before any real money</li>
+          <li>Daily P&amp;L summary; typically 2–3 weeks to live</li>
+        </ul>
+        <div class="fit"><b>Fit:</b> you already bet, and want a bot running your account behind hard limits.</div>
+        <a class="btn primary" href="https://cal.com/jonbush/scoping-call">Start a starter bot</a>
+      </div>
+
+      <div class="offer">
+        <div class="k">03 · Custom</div>
         <h3>Trading System Build</h3>
         <div class="price">from $18,000</div>
-        <p>A production trading or market-making system for your own account, running your pricing model with resting-order execution.</p>
+        <p>A production trading or market-making system built around your own pricing model, any supported venue.</p>
         <ul>
           <li>Exchange API + live order-book stream integration</li>
           <li>Fill ledger reconciled against exchange records</li>
@@ -335,24 +390,65 @@ footer .disc{margin-top:18px;max-width:880px;font-size:12px;line-height:1.6}
           <li>Cloud deployment, CI/CD, monitoring and runbooks</li>
         </ul>
         <div class="fit"><b>Fit:</b> traders and small funds with a strategy and their own capital.</div>
-        <a class="btn primary" href="https://cal.com/jonbush/scoping-call">Scope a build</a>
-      </div>
-
-      <div class="offer">
-        <div class="k">03 · Operate</div>
-        <h3>Ops Retainer</h3>
-        <div class="price">from $1,500<small> / month</small></div>
-        <p>After the build, keep it healthy. Your strategy and your limits; I keep the system running and the books honest.</p>
-        <ul>
-          <li>Hosting, monitoring and alerting</li>
-          <li>Weekly reconciliation against the exchange</li>
-          <li>Incident response for outages, API changes and maintenance windows</li>
-          <li>Monthly report: fills, markouts, breaker events</li>
-        </ul>
-        <div class="fit"><b>Fit:</b> you want the system to run without becoming its full-time engineer.</div>
-        <a class="btn ghost" href="https://cal.com/jonbush/scoping-call">Ask about ops</a>
+        <a class="btn ghost" href="https://cal.com/jonbush/scoping-call">Scope a build</a>
       </div>
     </div>
+
+    <div class="ops">
+      <div>
+        <div class="k">After launch · optional</div>
+        <h3>Keep it running</h3>
+        <p>Hosting, monitoring, exchange reconciliation and fixes when APIs or markets change. Cancel any month.</p>
+      </div>
+      <div class="ops-tier"><span>Starter ops</span><b>$400<small>/mo</small></b><em>monitoring, alerts, monthly reconciliation and report</em></div>
+      <div class="ops-tier"><span>Full ops</span><b>$1,200<small>/mo</small></b><em>weekly reconciliation, incident response, monthly markout review</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="wrap">
+    <div class="eyebrow">Live results · free · updated weekly</div>
+    <h2>The numbers, including the boring ones</h2>
+    <p class="lead">What my own systems are doing right now. Real money and paper are labeled, and the ideas that failed stay on the list.</p>
+    <div class="results">
+      <div class="res">
+        <div class="res-top"><span class="pill real">Real money</span><span class="when">since Oct 19, 2026</span></div>
+        <h3>Bitcoin market maker</h3>
+        <div class="big-n">+$16.28</div>
+        <div class="sub">bot P&amp;L confirmed against Polymarket's own trade records</div>
+        <ul class="kv">
+          <li><span>Ledger vs exchange</span><b class="ok">Δ $0.00</b></li>
+          <li><span>Fills</span><b>855</b></li>
+          <li><span>Markets quoted</span><b>58 / 58 matched</b></li>
+          <li><span>Bankroll</span><b>small, under $250</b></li>
+        </ul>
+      </div>
+      <div class="res">
+        <div class="res-top"><span class="pill paper">Paper · no real money</span><span class="when">21 NBA games</span></div>
+        <h3>NBA one-sided maker</h3>
+        <div class="big-n">+$340.81</div>
+        <div class="sub">settled, simulated fills against the live order book</div>
+        <ul class="kv">
+          <li><span>Fills / shares</span><b>655 / 7,734</b></li>
+          <li><span>Price move 2 min after fills</span><b>−0.07¢</b></li>
+          <li><span>Read</span><b class="warn">mostly favorites that won</b></li>
+          <li><span>Status</span><b>paper until 30+ games</b></li>
+        </ul>
+      </div>
+      <div class="res killed">
+        <div class="res-top"><span class="pill dead">Tested · killed</span><span class="when">Oct 2026</span></div>
+        <h3>Ideas that didn't hold up</h3>
+        <ul class="dead-list">
+          <li><b>MLB speed on scoring plays</b><span>market repriced before the public feed showed the run</span></li>
+          <li><b>Baseball model between plays</b><span>edge of ~0.2¢, smaller than the fee</span></li>
+          <li><b>NBA score model</b><span>lost to the market after fills</span></li>
+          <li><b>Two-sided NBA quoting</b><span>−$170 to −$200 on replay</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Last updated Nov 2, 2026. Research and engineering results from my own accounts, not trading advice or a forecast of future results. Weekly recaps on <a href="https://www.linkedin.com/in/jbush-engineer/">LinkedIn</a>.</p>
   </div>
 </section>
 
@@ -466,7 +562,7 @@ footer .disc{margin-top:18px;max-width:880px;font-size:12px;line-height:1.6}
       <details><summary>Can you guarantee it will make money?</summary><p>No one honestly can. What I guarantee is measurement: you'll know from the ledger and markouts whether it does, and the Edge Study exists so you can find out before paying for a full build.</p></details>
       <details><summary>Which venues do you support?</summary><p>Polymarket US and Kalshi for event contracts, and major crypto exchanges with REST and WebSocket APIs. If the venue has a documented API, it's usually buildable; we confirm in scoping.</p></details>
       <details><summary>Who owns the code?</summary><p>You do. The repository, deployment scripts and runbooks are transferred on delivery.</p></details>
-      <details><summary>How long does a build take?</summary><p>Typically 4–8 weeks from deposit to small-live, depending on venue and strategy complexity. Paper trading time is part of the schedule, not an extra.</p></details>
+      <details><summary>How long does a build take?</summary><p>A Starter Bot is typically 2–3 weeks to live. A custom build is typically 4–8 weeks from deposit to small-live, depending on venue and strategy complexity. Paper trading time is part of the schedule, not an extra.</p></details>
       <details><summary>Do I need a strategy already?</summary><p>For a build, yes, at least a clear idea of how you'd price the market. If you're not sure there's an edge, start with an Edge Study.</p></details>
     </div>
   </div>
